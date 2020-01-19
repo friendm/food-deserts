@@ -1,0 +1,20 @@
+{
+  "name": "food-deserts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd server && npm install && cd ../client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team9353/food-deserts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/team9353/food-deserts/issues"
+  },
+  "homepage": "https://github.com/team9353/food-deserts#readme"
+}

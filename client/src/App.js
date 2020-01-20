@@ -1,38 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './components/css/App.css';
 import CacheBuster from "./components/util/CacheBuster";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import Map from "./components/map";
+import Home from "./components/Home";
+import EmailTemp from "./components/EmailTemp";
+import MoreInfo from "./components/MoreInfo";
+import FAQ from "./components/FAQ";
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload. Hello test!
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <CacheBuster>
-                {({loading, isLatestVersion, refreshCacheAndReload}) => {
-                    if (loading) {
-                        return null;
-                    }
-                    if (!loading && !isLatestVersion) {
-                        // You can decide how and when you want to force reload
-                        refreshCacheAndReload();
-                    }
-                    return null;
-                }}
-            </CacheBuster>
-        </div>
+        <Router>
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/map">Map</Link>
+                    </li>
+                    <li>
+                        <Link to="/email">Email</Link>
+                    </li>
+                    <li>
+                        <Link to="/moreinfo">More Info</Link>
+                    </li>
+                    <li>
+                        <Link to="/faq">FAQ</Link>
+                    </li>
+                </ul>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/map" component={Map} />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/map" component={Map} />
+                    <Route path="/email" component={EmailTemp} />
+                    <Route path="/moreinfo" component={MoreInfo} />
+                    <Route path="/faq" component={FAQ} />
+                </Switch>
+            </div>
+        </Router>
     );
 }
 

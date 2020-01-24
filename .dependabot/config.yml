@@ -5,31 +5,10 @@ update_configs:
   - package_manager: "javascript"
     directory: "/"
     update_schedule: "live"
-    automerged_updates:
-      - match:
-          dependency_type: "development"
-          update_type: "all"
-      - match:
-          dependency_type: "production"
-          update_type: "semver:minor"
   - package_manager: "javascript"
     directory: "/client"
     update_schedule: "live"
-    automerged_updates:
-      - match:
-          dependency_type: "development"
-          update_type: "all"
-      - match:
-          dependency_type: "production"
-          update_type: "semver:minor"
   - package_manager: "javascript"
     directory: "/server"
     update_schedule: "live"
-    automerged_updates:
-      - match:
-          dependency_type: "development"
-          update_type: "all"
-      - match:
-          dependency_type: "production"
-          update_type: "semver:minor"
-          
+    

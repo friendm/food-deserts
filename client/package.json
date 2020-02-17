@@ -5,7 +5,7 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^9.0.0",
+    "@testing-library/user-event": "^10.0.0",
     "fs": "0.0.1-security",
     "google-map-react": "^1.1.6",
     "react": "^16.12.0",

@@ -1,4 +1,7 @@
-div .outer h1{
+div .outer h1 {
     text-align: center;
-    margin: 50px;
+}
+
+.outer {
+    padding: 15px !important;
 }

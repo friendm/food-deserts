@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Dropdown, Form, Radio } from "semantic-ui-react";
+import {Dropdown, Form, Radio} from "semantic-ui-react";
 import "./css/filters.css";
 
 function Filters(props) {
@@ -82,7 +82,7 @@ function Filters(props) {
 
     return (
         <div>
-            <Form class="filter">
+            <Form className="filter">
                 <Form.Field>
                     I am looking to spend ___ money.
                 </Form.Field>
@@ -115,7 +115,7 @@ function Filters(props) {
                 </Form.Field>
             </Form>
 
-            <div class="filter">
+            <div className="filter">
                 <p> I prefer to travel ___ minutes to the grocery store </p>
                 <Dropdown
                     placeholder="Select Time"
@@ -124,7 +124,7 @@ function Filters(props) {
                     options={travelOptions}
                 />
             </div>
-            <div class="filter">
+            <div className="filter">
                 <p> I prefer to ____ to the grocery store: </p>
                 <Dropdown
                     placeholder="Select Transportation"

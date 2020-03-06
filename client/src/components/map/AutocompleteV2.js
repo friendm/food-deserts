@@ -1,8 +1,10 @@
 import React from 'react';
 import PlacesAutocomplete, {geocodeByAddress, getLatLng,} from 'react-places-autocomplete';
-import {Input, List, Loader} from "semantic-ui-react";
+import {Form, Input, List, Loader} from "semantic-ui-react";
+import {compose, withProps} from "recompose";
+import {withScriptjs} from "react-google-maps";
 
-class AutocompleteV2 extends React.Component {
+class AutocompleteV2Internal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {address: '', latLng: {}, savedAddress: ''};
@@ -13,15 +15,18 @@ class AutocompleteV2 extends React.Component {
     };
 
     handleSelect = address => {
+        this.props.onWaitingForGeocode(true);
         geocodeByAddress(address)
             .then(results => {
                 this.setState({
                     savedAddress: address.formatted_address
                 });
-                console.log("cl", address, results[0]);
                 return getLatLng(results[0]);
             })
-            .then(latLng => this.setState({latLng}))
+            .then(latLng => {
+                this.setState({latLng});
+                this.props.onSelect(latLng);
+            })
             .catch(error => console.error('Error', error));
     };
 
@@ -35,11 +40,18 @@ class AutocompleteV2 extends React.Component {
                 >
                     {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
                         <div>
-                            <Input
-                                {...getInputProps({
-                                    placeholder: 'Search places',
-                                })}
-                            />
+                            <Form autoComplete="off">
+                                <Input
+
+                                    {...getInputProps({
+                                        placeholder: "Start typing an address for suggestions...",
+                                        icon: "search",
+                                        fluid: true,
+                                        size: "massive"
+                                    })}
+
+                                />
+                            </Form>
                             <List celled className="autocomplete-dropdown-container">
                                 {loading && <Loader active inline="centered" content="Fetching locations..."/>}
                                 {suggestions.map(suggestion => {
@@ -73,5 +85,16 @@ class AutocompleteV2 extends React.Component {
         );
     }
 }
+
+const AutocompleteV2 = compose(
+    withProps({
+        googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`,
+        loadingElement: (<p>Loading</p>),
+        containerElement: <div
+            style={{minHeight: "400px", height: "500px", maxHeight: "100px", minWidth: '500px', maxWidth: "800px"}}/>,
+        mapElement: <div style={{height: '100%'}}/>,
+    }),
+    withScriptjs
+)(AutocompleteV2Internal);
 
 export default AutocompleteV2;

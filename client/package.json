@@ -7,7 +7,7 @@
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
     "fs": "0.0.1-security",
-    "google-map-react": "^1.1.6",
+    "google-map-react": "^1.1.7",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",

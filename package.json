@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/team9353/food-deserts#readme",
   "devDependencies": {
-    "danger": "^9.3.0"
+    "danger": "^9.4.0"
   },
   "dependencies": {
     "prop-types": "^15.7.2"

@@ -8,12 +8,14 @@ import BudgetEntry from "./BudgetEntry";
 
 function WizardContainer(props) {
     const [locationData, setLocationData] = useState({});
+    const [instance, setInstance] = useState();
 
     return <div>
         <Header size="huge" textAlign={"center"}>Do you live in a food desert?</Header>
         <div id="wizard-container">
-            {locationData.address && <Segment vertical><ChosenAddress address={locationData.address}/></Segment>}
-            <StepWizard>
+            {locationData.address && instance &&
+            <Segment vertical><ChosenAddress stepWizard={instance} address={locationData.address}/></Segment>}
+            <StepWizard instance={setInstance}>
                 <AddressEntry dataChange={setLocationData}/>
                 <BudgetEntry/>
             </StepWizard>

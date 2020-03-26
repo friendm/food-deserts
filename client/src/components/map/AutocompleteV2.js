@@ -18,9 +18,7 @@ class AutocompleteV2Internal extends React.Component {
         this.props.onWaitingForGeocode(true);
         geocodeByAddress(address)
             .then(results => {
-                this.setState({
-                    savedAddress: address.formatted_address
-                });
+                this.props.saveAddress(address);
                 return getLatLng(results[0]);
             })
             .then(latLng => {
@@ -53,7 +51,7 @@ class AutocompleteV2Internal extends React.Component {
                                 />
                             </Form>
                             <List celled className="autocomplete-dropdown-container">
-                                {loading && <Loader active inline="centered" content="Fetching locations..."/>}
+                                <Loader active={loading} inline="centered" content="Fetching locations..."/>
                                 {suggestions.map(suggestion => {
                                     const className = suggestion.active
                                         ? 'suggestion-item--active'
@@ -62,7 +60,6 @@ class AutocompleteV2Internal extends React.Component {
                                     const style = suggestion.active
                                         ? {backgroundColor: '#fafafa', cursor: 'pointer'}
                                         : {backgroundColor: '#ffffff', cursor: 'pointer'};
-                                    console.log(suggestion);
                                     return (
                                         <List.Item
                                             {...getSuggestionItemProps(suggestion, {
@@ -89,7 +86,7 @@ class AutocompleteV2Internal extends React.Component {
 const AutocompleteV2 = compose(
     withProps({
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`,
-        loadingElement: (<p>Loading</p>),
+        loadingElement: (<Loader active inline="centered" content="Please wait..."/>),
         containerElement: <div
             style={{minHeight: "400px", height: "500px", maxHeight: "100px", minWidth: '500px', maxWidth: "800px"}}/>,
         mapElement: <div style={{height: '100%'}}/>,

@@ -1,23 +1,40 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AutocompleteV2 from "../AutocompleteV2";
-import {Button, Header, Loader} from "semantic-ui-react";
+import {Loader} from "semantic-ui-react";
+import WizardStep from "./WizardStep";
 
 function AddressEntry(props) {
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState({});
+    const [dummy, setDummy] = useState(null);
+    const [address, setAddress] = useState("");
     const [loadingLocation, setLoadingLocation] = useState(false);
 
-    function handleSelect(val) {
-        setLocation(val);
-        setLoadingLocation(false);
+    useEffect(() => {
+        console.log("I was called?");
+    });
+
+    async function handleSelect(val) {
+        console.log("handleSelect val", val);
+        const newLocationVal = {
+            lat: val.lat,
+            lng: val.lng
+        };
+        nextStep(newLocationVal, address);
+    }
+
+    function nextStep(location, address) {
+        props.dataChange({
+            location, address
+        });
+        console.log("LA", {location, address});
+        props.nextStep();
     }
 
     return (
-        <div>
-            <Header textAlign={"center"} size={"large"}>Enter in your address or neighborhood to get started</Header>
-            <AutocompleteV2 onWaitingForGeocode={setLoadingLocation} onSelect={handleSelect}/>
+        <WizardStep header="Enter your address or neighborhood to get started">
+            <AutocompleteV2 onWaitingForGeocode={setLoadingLocation} onSelect={handleSelect} saveAddress={setAddress}/>
             <Loader active={loadingLocation} inline="centered" content="Fetching address information..."/>
-            {location && location.lat && <Button primary size="large" onClick={props.nextStep}>Continue</Button>}
-        </div>
+        </WizardStep>
     );
 }
 

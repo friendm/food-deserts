@@ -1,0 +1,16 @@
+/*Hides overflow scrollbar in main content container.*/
+.pushable {
+    overflow-y: hidden;
+    min-height: 100vh;
+}
+
+
+/*Aligns rows and main navbar to the universal container.*/
+.row,
+.pushable,
+.pushable .pusher > div {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 5px;
+}

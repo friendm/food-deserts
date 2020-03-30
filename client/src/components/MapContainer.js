@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMap from "./map/GoogleMap";
-import Filters from "./Filters.js";
-import "./css/map.css";
+import Filters from "./filters/Filters.js";
+import "./map/style.css";
 
 class MapContainer extends React.Component {
     render() {

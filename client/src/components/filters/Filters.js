@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Dropdown, Form, Radio } from "semantic-ui-react";
-import "./css/filters.css";
+import "./style.css";
 
 function Filters(props) {
     const [value, setValue] = useState(null);

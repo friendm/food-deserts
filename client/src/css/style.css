@@ -1,4 +1,53 @@
+/* hero banner header text */
+
 .hero .ui.header {
-    font-size: 3em;
+    font-size: 3.5em;
     text-align: left;
 }
+
+.hero .column p.hero-text {
+    font-size: 1.5em;
+}
+
+/* No emphasis styling for now.*/
+.hero p.hero-text i.emph {
+    font-style: normal;
+}
+
+/*Informational grid text-----------------*/
+.column.info p {
+    font-size: 1.5em;
+    line-height: 1.85;
+}
+
+.column.info .header.large {
+    font-size: 2.25em;
+}
+
+.column.info-left {
+    text-align: left;
+}
+
+.column.info-right {
+    text-align: right;
+}
+
+.column.info-center {
+    text-align: center;
+}
+
+.ui.grid > .row > .column.info > img {
+    width: 30vw;
+    max-width: 300px;
+}
+
+.column.info-left img {
+    display: block;
+    margin: 0 auto 0 0;
+}
+
+.column.info-right img {
+    display: block;
+    margin: 0 0 0 auto;
+}
+

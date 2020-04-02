@@ -6,11 +6,27 @@
 
 
 /*Aligns rows and main navbar to the universal container.*/
-.row,
-.pushable,
-.pushable .pusher > div {
+.ui.grid > .row,
+.pushable .pusher > div.grid{
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 0 2em;
+}
+
+/* Hero banner row has extra margin */
+.ui.grid > .row.hero {
+    margin: 5.5em auto;
+}
+
+/* Other rows have margins on the bottom */
+.ui.grid > .row {
+    margin: 0 auto 5.5em auto;
+}
+
+.ui.grid > .row.full-width-row,
+.ui.grid > .row.full-width-row > .column {
+    width: 100%;
+    max-width: none;
+    padding: 0;
 }

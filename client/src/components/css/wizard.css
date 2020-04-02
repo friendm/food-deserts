@@ -35,7 +35,7 @@
 }
 
 .choice.not-selected > div > img.image {
-    opacity: 60%;
+    opacity: .6;
 }
 
 

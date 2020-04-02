@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import AutocompleteV2 from "../AutocompleteV2";
+import AutocompleteV2 from "./AutocompleteV2";
 import {Loader} from "semantic-ui-react";
-import WizardStep from "./WizardStep";
+import WizardStep from "../WizardStep";
 
 function AddressEntry(props) {
     const [location, setLocation] = useState({});

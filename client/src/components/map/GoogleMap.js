@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import AutocompleteV2 from "./AutocompleteV2";
+import AutocompleteV2 from "./wizard/address/AutocompleteV2";
 
 
 function GoogleMap(props) {

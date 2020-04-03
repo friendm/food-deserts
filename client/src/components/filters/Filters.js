@@ -6,24 +6,6 @@ function Filters(props) {
     const [value, setValue] = useState(null);
     const handleChange = (event, {value}) => setValue(value);
 
-    const priceOptions = [
-        {
-            key: "$",
-            text: "$",
-            value: 1,
-        },
-        {
-            key: "$$",
-            text: "$$",
-            value: 2,
-        },
-        {
-            key: "$$$",
-            text: "$$$",
-            value: 3,
-        },
-    ];
-
     const travelOptions = [
         {
             key: "10",

@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/team9353/food-deserts#readme",
   "devDependencies": {
-    "danger": "^10.0.0"
+    "danger": "^10.1.0"
   },
   "dependencies": {
     "cors": "^2.8.5",

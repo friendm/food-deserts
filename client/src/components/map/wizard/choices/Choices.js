@@ -3,7 +3,7 @@ import {Grid} from "semantic-ui-react";
 import Choice from "./Choice";
 
 export function ChoiceEntry(text, img, key) {
-    this.key = key ? key : text.toLowerCase().replace(/[\s\/]/g, "_");
+    this.key = key ? key : text.toLowerCase().replace(/[\s/]/g, "_");
     this.text = text;
     this.img = img;
 }

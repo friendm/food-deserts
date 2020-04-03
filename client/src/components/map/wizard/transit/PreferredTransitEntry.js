@@ -32,7 +32,7 @@ function PreferredTransitEntry(props) {
 
     return (
         <WizardStep header="How do you want to get there?">
-            <Grid>
+            <Grid stackable>
                 <Choices maxSelections={1} choices={choices} selectionHandler={props.setPreferredTransit}/>
                 <Grid.Row columns={3} className={cx({hidden: !props.preferredTransit.length})}>
                     <Grid.Column size={2}>

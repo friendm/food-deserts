@@ -51,7 +51,7 @@ function PreferredTravelTimeEntry(props) {
 
     return (
         <WizardStep header="How long are you willing to spend getting there?">
-            <Grid>
+            <Grid stackable>
                 {props.preferredTransit.length === 1 &&
                 <Choices maxSelections={1} choices={choices[props.preferredTransit[0]]}
                          selectionHandler={props.setPreferredTravelTime}/>}

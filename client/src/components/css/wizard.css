@@ -20,6 +20,12 @@
     align-items: center;
 }
 
+@media screen and (max-width: 500px) {
+    .choice {
+        max-width: 125px;
+    }
+}
+
 
 .choice.selected {
     border-color: #4088e8;

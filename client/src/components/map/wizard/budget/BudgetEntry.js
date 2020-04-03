@@ -27,7 +27,7 @@ function BudgetEntry(props) {
 
     return (
         <WizardStep header="How much money do you want to spend on groceries?">
-            <Grid>
+            <Grid stackable>
                 <Choices choices={choices} maxSelections={1} selectionHandler={props.setBudget}/>
                 <Grid.Row columns={3} className={cx({hidden: !props.budget})}>
                     <Grid.Column size={2}>

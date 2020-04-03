@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
 import AutocompleteV2 from "./AutocompleteV2";
-import {Loader} from "semantic-ui-react";
+import {Grid, Loader} from "semantic-ui-react";
 import WizardStep from "../WizardStep";
 
 function AddressEntry(props) {
-    const [location, setLocation] = useState({});
-    const [dummy, setDummy] = useState(null);
     const [address, setAddress] = useState("");
     const [loadingLocation, setLoadingLocation] = useState(false);
 
@@ -32,8 +30,16 @@ function AddressEntry(props) {
 
     return (
         <WizardStep header="Enter your address or neighborhood to get started">
-            <AutocompleteV2 onWaitingForGeocode={setLoadingLocation} onSelect={handleSelect} saveAddress={setAddress}/>
-            <Loader active={loadingLocation} inline="centered" content="Fetching address information..."/>
+            <Grid stackable>
+                <Grid.Row columns={1}>
+                    <Grid.Column>
+                        <AutocompleteV2 onWaitingForGeocode={setLoadingLocation} onSelect={handleSelect}
+                                        saveAddress={setAddress}/>
+                        <Loader active={loadingLocation} inline="centered"
+                                content="Fetching address information..."/>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         </WizardStep>
     );
 }

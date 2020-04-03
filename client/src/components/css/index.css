@@ -23,3 +23,9 @@ img.home-img {
 .home-text {
     font-size: 1.3em;
 }
+
+/* from https://github.com/Semantic-Org/Semantic-UI/issues/4805#issuecomment-292021293 */
+.ui.button.basic.link, .ui.button.basic.link:hover, .ui.button.basic.link:focus {
+    box-shadow: 0 0 !important;
+    padding: 0;
+}

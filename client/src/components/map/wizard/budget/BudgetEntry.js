@@ -38,7 +38,7 @@ function BudgetEntry(props) {
 const mapStateToProps = state => {
     return {
         budget: state.budget
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => {

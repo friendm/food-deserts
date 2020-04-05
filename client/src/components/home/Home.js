@@ -16,7 +16,8 @@ function Home(props) {
 
                 <Grid.Column className="info-left info">
                     <Header>Do I live in an Atlanta food desert?</Header>
-                    <p className="hero-text">Scroll down to learn more about how <i className="emph"> where you live in Atlanta can affect the food you eat.</i></p>
+                    <p className="hero-text">Scroll down to learn more about how <i className="emph"> where you live in
+                        Atlanta can affect the food you eat.</i></p>
                     <Button className="main-cta cta" as={Link} to="/map">View our map</Button>
                 </Grid.Column>
 
@@ -61,7 +62,7 @@ function Home(props) {
             <Grid.Row columns={1} className="cta-row full-width-row">
                 <Grid.Column className="info-center info">
                     <Header size="large">Am I living in a food desert?</Header>
-                    <Button className="main-cta cta" as={Link} to="/map" >Find out now</Button>
+                    <Button className="main-cta cta" as={Link} to="/map">Find out now</Button>
                 </Grid.Column>
             </Grid.Row>
 

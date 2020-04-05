@@ -7,7 +7,7 @@ import "./css/state.css";
 import "./css/style.css";
 import CacheBuster from "./components/util/CacheBuster";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import MapContainer from "./components/MapContainer";
+import MapContainer from "./components/map/MapContainer";
 import Home from "./components/home/Home";
 import EmailTemp from "./components/EmailTemp";
 import MoreInfo from "./components/MoreInfo";
@@ -17,8 +17,12 @@ import {Sidebar} from "semantic-ui-react";
 
 function App() {
     return (
-        <Sidebar.Pushable as={"div"}>
-            <Router>
+        <Sidebar.Pushable as={"div"} style={{
+            margin: "0 auto",
+            minHeight: "100vh" // We need the page height to match the screen/window height so the mobile
+            // hamburger menu appears correctly.  This method of doing that is from https://github.com/ctrlplusb/react-sizeme/issues/111#issuecomment-295166102
+        }}>
+        <Router>
                 <div>
                     <Navigation/>
                     <Switch>

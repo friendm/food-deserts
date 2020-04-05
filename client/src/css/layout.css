@@ -7,7 +7,7 @@
 
 /*Aligns rows and main navbar to the universal container.*/
 .ui.grid > .row,
-.pushable .pusher > div.grid{
+.pushable .pusher > div.grid {
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;

@@ -9,7 +9,7 @@
     min-height: 300px;
 }
 
-.ui.grid > .row.hero > .column.info > img  {
+.ui.grid > .row.hero > .column.info > img {
     width: 35vw;
     max-width: 400px;
 }

@@ -5,11 +5,11 @@ require("dotenv").config;
 
 const key = process.env.GOOGLE_MAPS_API_KEY;
 
-let PlaceDetails = function() {
+let PlaceDetails = function () {
     this.places = [];
 };
 
-router.get("/query", async function(req, res, next) {
+router.get("/query", async function (req, res, next) {
     let lat = req.query.lat;
     let long = req.query.long;
     let radius = 50000;
@@ -26,7 +26,7 @@ router.get("/query", async function(req, res, next) {
             method: "get"
         });
         results = answer.data.results;
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
 

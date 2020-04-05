@@ -1,6 +1,12 @@
-div .outer h1{
+div .outer h1 {
     text-align: center;
-    margin: 50px;
+}
+
+div.outer {
+    padding: 15px !important;
+    max-width: 700px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .button {

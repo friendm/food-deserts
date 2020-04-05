@@ -1,19 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+import React from "react";
+import ReactDOM from "react-dom";
 //css imports
 import './components/home/style.css';
-
 //Pages in app imports
-import App from './App.js';
-
+import App from "./App.js";
 //Production Imports
-import * as serviceWorker from './serviceWorker';
-import packageJson from '../package.json';
+import * as serviceWorker from "./serviceWorker";
+import packageJson from "../package.json";
+import {store} from "./redux/store";
+import {Provider} from "react-redux";
 
 global.appVersion = packageJson.version;
 
-ReactDOM.render(<App /> , document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

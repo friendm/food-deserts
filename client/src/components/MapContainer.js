@@ -1,12 +1,11 @@
 import React from "react";
 import GoogleMap from "./map/GoogleMap";
 import Filters from "./filters/Filters.js";
-import "./map/style.css";
 
 class MapContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { apiResponse: "" };
+        this.state = {apiResponse: ""};
         this.lat = 33.7490;
         this.long = -84.3880;
     }

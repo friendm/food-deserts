@@ -16,9 +16,8 @@ function App() {
             width: "100%",
             maxWidth: "960px",
             margin: "0 auto",
-            padding: "0 5px",
-            minHeight: "100vh" // We need the page height to match the screen/window height so the mobile
-                               // hamburger menu appears correctly.  This method of doing that is from https://github.com/ctrlplusb/react-sizeme/issues/111#issuecomment-295166102
+            height: "100vh" // We need the page height to match the screen/window height so the mobile
+            // hamburger menu appears correctly.  This method of doing that is from https://github.com/ctrlplusb/react-sizeme/issues/111#issuecomment-295166102
         }}>
 
         <Router>

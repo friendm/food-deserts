@@ -34,7 +34,7 @@ const mapStateToProps = state => {
     return {
         address: state.address,
         location: state.location
-    }
+    };
 };
 
 export default connect(mapStateToProps)(AddressEntry);

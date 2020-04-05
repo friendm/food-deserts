@@ -1,5 +1,5 @@
 import React from "react";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import PropTypes from "prop-types";
 import {Menu} from "semantic-ui-react";
 import {Link} from "react-router-dom";

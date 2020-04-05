@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-
+import React, {useState} from "react";
 import Car from "../img/transit/car.png";
 import Wheelchair from "../img/transit/wheelchair.png";
 import PublicTransit from "../img/transit/public_transportation.png";
@@ -49,7 +48,7 @@ function PreferredTransitEntry(props) {
 const mapStateToProps = state => {
     return {
         preferredTransit: state.preferredTransit
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -57,7 +56,7 @@ const mapDispatchToProps = dispatch => {
         setPreferredTransit: newTransit => {
             dispatch(updatePreferredTransit(newTransit));
         }
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferredTransitEntry);

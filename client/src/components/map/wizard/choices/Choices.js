@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {Grid} from "semantic-ui-react";
 import Choice from "./Choice";
 

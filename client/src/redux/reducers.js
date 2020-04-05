@@ -16,35 +16,35 @@ export function updateAddress(address) {
     return {
         type: SET_ADDRESS,
         address
-    }
+    };
 }
 
 export function updateLocation(location) {
     return {
         type: SET_LOCATION,
         location
-    }
+    };
 }
 
 export function updateBudget(budget) {
     return {
         type: SET_BUDGET,
         budget
-    }
+    };
 }
 
 export function updatePreferredTransit(transit) {
     return {
         type: SET_PREFERRED_TRANSIT,
         transit
-    }
+    };
 }
 
 export function updatePreferredTravelTime(travelTime) {
     return {
         type: SET_PREFERRED_TRAVEL_TIME,
         travelTime
-    }
+    };
 }
 
 export function rootReducer(state = initialState, action) {

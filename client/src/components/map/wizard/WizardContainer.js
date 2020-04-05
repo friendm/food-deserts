@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "../../css/wizard.css";
-import StepWizard from 'react-step-wizard';
+import StepWizard from "react-step-wizard";
 import AddressEntry from "./address/AddressEntry";
 import ChosenAddress from "./address/ChosenAddress";
 import {Header, Segment} from "semantic-ui-react";
@@ -31,7 +31,7 @@ function WizardContainer({address}) {
 const mapStateToProps = state => {
     return {
         address: state.address
-    }
+    };
 };
 
 export default connect(mapStateToProps)(WizardContainer);

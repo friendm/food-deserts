@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {updatePreferredTravelTime} from "../../../../redux/reducers";
 import {connect} from "react-redux";
 import Choices, {ChoiceEntry} from "../choices/Choices";
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
     return {
         preferredTransit: state.preferredTransit,
         preferredTravelTime: state.preferredTravelTime
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -72,7 +72,7 @@ const mapDispatchToProps = dispatch => {
         setPreferredTravelTime: travelTime => {
             dispatch(updatePreferredTravelTime(travelTime));
         }
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreferredTravelTimeEntry);

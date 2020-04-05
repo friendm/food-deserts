@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
     return {
         address: state.address
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChosenAddress);

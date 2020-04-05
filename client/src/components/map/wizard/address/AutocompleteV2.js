@@ -1,5 +1,5 @@
 import React from "react";
-import PlacesAutocomplete, {geocodeByAddress, getLatLng,} from "react-places-autocomplete";
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from "react-places-autocomplete";
 import {Form, Input, List, Loader} from "semantic-ui-react";
 import {compose, withProps} from "recompose";
 import {withScriptjs} from "react-google-maps";
@@ -27,9 +27,9 @@ class AutocompleteV2Internal extends React.Component {
                 this.props.onSelect(latLng);
                 this.setState({
                     address: ""
-                })
+                });
             })
-            .catch(error => console.error('Error', error));
+            .catch(error => console.error("Error", error));
     };
 
     render() {
@@ -57,12 +57,12 @@ class AutocompleteV2Internal extends React.Component {
                             <Loader active={loading} inline="centered" content="Loading..."/>
                             {suggestions.map(suggestion => {
                                 const className = suggestion.active
-                                    ? 'suggestion-item--active'
-                                    : 'suggestion-item';
+                                    ? "suggestion-item--active"
+                                    : "suggestion-item";
                                 // inline style for demonstration purpose
                                 const style = suggestion.active
-                                    ? {backgroundColor: '#fafafa', cursor: 'pointer'}
-                                    : {backgroundColor: '#ffffff', cursor: 'pointer'};
+                                    ? {backgroundColor: "#fafafa", cursor: "pointer"}
+                                    : {backgroundColor: "#ffffff", cursor: "pointer"};
                                 return (
                                     <List.Item
                                         {...getSuggestionItemProps(suggestion, {
@@ -90,7 +90,7 @@ const AutocompleteV2 = compose(
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=geometry,drawing,places`,
         loadingElement: (<Loader active inline="centered" content="Please wait..."/>),
         containerElement: <div
-            style={{minHeight: "400px", height: "500px", maxHeight: "100px", minWidth: '500px', maxWidth: "800px"}}/>,
+            style={{minHeight: "400px", height: "500px", maxHeight: "100px", minWidth: "500px", maxWidth: "800px"}}/>,
         mapElement: <div style={{height: '100%'}}/>,
     }),
     withScriptjs
@@ -100,7 +100,7 @@ const mapStateToProps = state => {
     return {
         address: state.address,
         location: state.location
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -111,7 +111,7 @@ const mapDispatchToProps = dispatch => {
         setLocation: location => {
             dispatch(updateLocation(location));
         }
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AutocompleteV2);

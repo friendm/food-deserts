@@ -30,7 +30,7 @@ function PreferredTransitEntry(props) {
                     <Image src={choice.img}/>
                     <div className="choice-text"><p>{choice.text}</p></div>
                 </div>
-            }
+            };
         }
     );
 

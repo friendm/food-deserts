@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
         setLocation: location => {
             dispatch(updateLocation(location));
         }
-    }
+    };
 };
 
 const mapStateToProps = state => {

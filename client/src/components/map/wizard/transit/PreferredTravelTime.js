@@ -11,7 +11,7 @@ function choiceFn(choice) {
         content: <div>
             <span className="choice-text">{choice.text}</span>
         </div>
-    }
+    };
 }
 
 function PreferredTravelTimeEntry(props) {

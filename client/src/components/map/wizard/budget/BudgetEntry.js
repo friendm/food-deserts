@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 import WizardStep from "../WizardStep";
 import {Image} from "semantic-ui-react";
-
 import PriceLowest from "../img/budget/price_lowest.png";
 import PriceMiddle from "../img/budget/price_middle.png";
 import PriceHighest from "../img/budget/price_highest.png";
@@ -47,7 +46,7 @@ const mapDispatchToProps = dispatch => {
         setBudget: budget => {
             dispatch(updateBudget(budget));
         }
-    }
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetEntry);

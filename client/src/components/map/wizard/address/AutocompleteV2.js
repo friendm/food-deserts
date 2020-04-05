@@ -91,7 +91,7 @@ const AutocompleteV2 = compose(
         loadingElement: (<Loader active inline="centered" content="Please wait..."/>),
         containerElement: <div
             style={{minHeight: "400px", height: "500px", maxHeight: "100px", minWidth: "500px", maxWidth: "800px"}}/>,
-        mapElement: <div style={{height: '100%'}}/>,
+        mapElement: <div style={{height: "100%"}}/>,
     }),
     withScriptjs
 )(AutocompleteV2Internal);

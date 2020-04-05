@@ -1,31 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import AutocompleteV2 from "./AutocompleteV2";
 import {Grid, Loader} from "semantic-ui-react";
 import WizardStep from "../WizardStep";
+import {connect} from "react-redux";
 
 function AddressEntry(props) {
-    const [address, setAddress] = useState("");
-    const [loadingLocation, setLoadingLocation] = useState(false);
-
-    useEffect(() => {
-        console.log("I was called?");
-    });
-
-    async function handleSelect(val) {
-        console.log("handleSelect val", val);
-        const newLocationVal = {
-            lat: val.lat,
-            lng: val.lng
-        };
-        nextStep(newLocationVal, address);
-    }
-
-    function nextStep(location, address) {
-        props.dataChange({
-            location, address
-        });
-        console.log("LA", {location, address});
-        props.nextStep();
+    function loading(address, location) {
+        if (!address) {
+            return false;
+        }
+        return address && !location;
     }
 
     return (
@@ -33,9 +17,9 @@ function AddressEntry(props) {
             <Grid stackable>
                 <Grid.Row columns={1}>
                     <Grid.Column>
-                        <AutocompleteV2 onWaitingForGeocode={setLoadingLocation} onSelect={handleSelect}
-                                        saveAddress={setAddress}/>
-                        <Loader active={loadingLocation} inline="centered"
+                        <AutocompleteV2 onSelect={props.nextStep}/>
+                        <Loader active={loading(props.address, props.location)}
+                                inline="centered"
                                 content="Fetching address information..."/>
                     </Grid.Column>
                 </Grid.Row>
@@ -44,5 +28,11 @@ function AddressEntry(props) {
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        address: state.address,
+        location: state.location
+    }
+};
 
-export default AddressEntry;
+export default connect(mapStateToProps)(AddressEntry);

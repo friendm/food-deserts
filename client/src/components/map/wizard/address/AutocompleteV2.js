@@ -1,13 +1,15 @@
-import React from 'react';
-import PlacesAutocomplete, {geocodeByAddress, getLatLng,} from 'react-places-autocomplete';
+import React from "react";
+import PlacesAutocomplete, {geocodeByAddress, getLatLng,} from "react-places-autocomplete";
 import {Form, Input, List, Loader} from "semantic-ui-react";
 import {compose, withProps} from "recompose";
 import {withScriptjs} from "react-google-maps";
+import {updateAddress, updateLocation} from "../../../../redux/reducers";
+import {connect} from "react-redux";
 
 class AutocompleteV2Internal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {address: '', latLng: {}, savedAddress: ''};
+        this.state = {address: ""};
     }
 
     handleChange = address => {
@@ -15,70 +17,70 @@ class AutocompleteV2Internal extends React.Component {
     };
 
     handleSelect = address => {
-        this.props.onWaitingForGeocode(true);
+        this.props.setAddress(address);
         geocodeByAddress(address)
             .then(results => {
-                this.props.saveAddress(address);
                 return getLatLng(results[0]);
             })
             .then(latLng => {
-                this.setState({latLng});
+                this.props.setLocation(latLng);
                 this.props.onSelect(latLng);
+                this.setState({
+                    address: ""
+                })
             })
             .catch(error => console.error('Error', error));
     };
 
     render() {
         return (
-            <>
-                <PlacesAutocomplete
-                    value={this.state.address}
-                    onChange={this.handleChange}
-                    onSelect={this.handleSelect}
-                >
-                    {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-                        <div>
-                            <Form autoComplete="off">
-                                <Input
+            <PlacesAutocomplete
+                value={this.state.address}
+                onChange={this.handleChange}
+                onSelect={this.handleSelect}
+            >
+                {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+                    <div>
+                        <Form autoComplete="off">
+                            <Input
 
-                                    {...getInputProps({
-                                        placeholder: "Start typing an address for suggestions...",
-                                        icon: "search",
-                                        fluid: true,
-                                        size: "massive"
-                                    })}
-
-                                />
-                            </Form>
-                            <List celled className="autocomplete-dropdown-container">
-                                <Loader active={loading} inline="centered" content="Fetching locations..."/>
-                                {suggestions.map(suggestion => {
-                                    const className = suggestion.active
-                                        ? 'suggestion-item--active'
-                                        : 'suggestion-item';
-                                    // inline style for demonstration purpose
-                                    const style = suggestion.active
-                                        ? {backgroundColor: '#fafafa', cursor: 'pointer'}
-                                        : {backgroundColor: '#ffffff', cursor: 'pointer'};
-                                    return (
-                                        <List.Item
-                                            {...getSuggestionItemProps(suggestion, {
-                                                className,
-                                                style,
-                                            })}
-                                        >
-
-                                            <List.Content>
-                                                <List.Header>{suggestion.formattedSuggestion.mainText}</List.Header>
-                                                {suggestion.formattedSuggestion.secondaryText}</List.Content>
-                                        </List.Item>
-                                    );
+                                {...getInputProps({
+                                    placeholder: "Type an address...",
+                                    icon: "search",
+                                    fluid: true,
+                                    size: "massive"
                                 })}
-                            </List>
-                        </div>
-                    )}
-                </PlacesAutocomplete>
-            </>
+
+                            />
+                        </Form>
+                        <List celled className="autocomplete-dropdown-container">
+                            <Loader active={loading} inline="centered" content="Loading..."/>
+                            {suggestions.map(suggestion => {
+                                const className = suggestion.active
+                                    ? 'suggestion-item--active'
+                                    : 'suggestion-item';
+                                // inline style for demonstration purpose
+                                const style = suggestion.active
+                                    ? {backgroundColor: '#fafafa', cursor: 'pointer'}
+                                    : {backgroundColor: '#ffffff', cursor: 'pointer'};
+                                return (
+                                    <List.Item
+                                        {...getSuggestionItemProps(suggestion, {
+                                            className,
+                                            style,
+                                        })}
+                                    >
+
+                                        <List.Content>
+                                            <List.Header>{suggestion.formattedSuggestion.mainText}</List.Header>
+                                            {suggestion.formattedSuggestion.secondaryText}</List.Content>
+                                    </List.Item>
+                                );
+                            })}
+                        </List>
+                    </div>
+                )}
+            </PlacesAutocomplete>
         );
     }
 }
@@ -94,4 +96,22 @@ const AutocompleteV2 = compose(
     withScriptjs
 )(AutocompleteV2Internal);
 
-export default AutocompleteV2;
+const mapStateToProps = state => {
+    return {
+        address: state.address,
+        location: state.location
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setAddress: address => {
+            dispatch(updateAddress(address));
+        },
+        setLocation: location => {
+            dispatch(updateLocation(location));
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AutocompleteV2);

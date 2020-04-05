@@ -12,7 +12,6 @@
 /*    monospace;*/
 /*}*/
 
-@import url("https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css");
 
 img.home-img {
     max-width: 250px !important;
@@ -25,7 +24,7 @@ img.home-img {
 }
 
 /* from https://github.com/Semantic-Org/Semantic-UI/issues/4805#issuecomment-292021293 */
-.ui.button.basic.link, .ui.button.basic.link:hover, .ui.button.basic.link:focus {
+.ui.button.basic.blue.link, .ui.button.basic.blue.link:hover, .ui.button.basic.blue.link:focus {
     box-shadow: 0 0 !important;
     padding: 0;
 }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Car from "../img/transit/car.png";
 import Wheelchair from "../img/transit/wheelchair.png";
 import PublicTransit from "../img/transit/public_transportation.png";
@@ -10,12 +10,6 @@ import {updatePreferredTransit} from "../../../../redux/reducers";
 import {connect} from "react-redux";
 
 function PreferredTransitEntry(props) {
-    const [width, setWidth] = useState(0);
-
-    function handleOnUpdate(e, {width}) {
-        setWidth(width);
-    }
-
     const choices = [
         new ChoiceEntry("Wheelchair or Scooter", Wheelchair),
         new ChoiceEntry("Walking", Walking),

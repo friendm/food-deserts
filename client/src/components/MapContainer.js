@@ -1,7 +1,6 @@
 import React from "react";
 import GoogleMap from "./map/GoogleMap";
 import Filters from "./filters/Filters.js";
-import "./map/style.css";
 
 class MapContainer extends React.Component {
     constructor(props) {

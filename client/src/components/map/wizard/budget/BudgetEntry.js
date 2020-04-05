@@ -20,7 +20,7 @@ function BudgetEntry(props) {
                 <Image src={choice.img}/>
                 <p className="choice-text">{choice.text}</p>
             </div>
-        }
+        };
     });
 
     return (

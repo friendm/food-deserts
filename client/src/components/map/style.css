@@ -8,3 +8,7 @@ div.outer {
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
+.button {
+    margin: 10px
+}

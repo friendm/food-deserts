@@ -1,28 +1,10 @@
 import React, {useState} from "react";
 import {Dropdown, Form, Radio} from "semantic-ui-react";
-import "./css/filters.css";
+import "./style.css";
 
 function Filters(props) {
     const [value, setValue] = useState(null);
     const handleChange = (event, {value}) => setValue(value);
-
-    const priceOptions = [
-        {
-            key: "$",
-            text: "$",
-            value: 1,
-        },
-        {
-            key: "$$",
-            text: "$$",
-            value: 2,
-        },
-        {
-            key: "$$$",
-            text: "$$$",
-            value: 3,
-        },
-    ];
 
     const travelOptions = [
         {

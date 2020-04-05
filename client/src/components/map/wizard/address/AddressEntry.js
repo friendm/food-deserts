@@ -13,7 +13,9 @@ function AddressEntry(props) {
     }
 
     return (
-        <WizardStep header="Enter your address or neighborhood to get started">
+        <WizardStep header="Enter your address or neighborhood to get started"
+                    hideBackBtn hideNextBtn
+        >
             <Grid stackable>
                 <Grid.Row columns={1}>
                     <Grid.Column>

@@ -6,8 +6,7 @@ import PublicTransit from "../img/transit/public_transportation.png";
 import Walking from "../img/transit/walk.png";
 import Choices, {ChoiceEntry} from "../choices/Choices";
 import WizardStep from "../WizardStep";
-import cx from "classnames";
-import {Button, Grid, Image} from "semantic-ui-react";
+import {Image} from "semantic-ui-react";
 import {updatePreferredTransit} from "../../../../redux/reducers";
 import {connect} from "react-redux";
 
@@ -37,18 +36,12 @@ function PreferredTransitEntry(props) {
     );
 
     return (
-        <WizardStep header="How do you want to get there?">
-            <Grid stackable>
-                <Choices maxSelections={1} choices={choices} selectionHandler={props.setPreferredTransit}/>
-                <Grid.Row columns={3} className={cx({hidden: !props.preferredTransit.length})}>
-                    <Grid.Column size={2}>
-                        <Button.Group>
-                            <Button size="large" onClick={props.previousStep}>Back</Button>
-                            <Button primary size="large" onClick={props.nextStep}>Continue</Button>
-                        </Button.Group>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+        <WizardStep header="How do you want to get there?"
+                    hideNextBtn={!props.preferredTransit.length}
+                    previousStep={props.previousStep}
+                    nextStep={props.nextStep}
+        >
+            <Choices maxSelections={1} choices={choices} selectionHandler={props.setPreferredTransit}/>
         </WizardStep>
     );
 }

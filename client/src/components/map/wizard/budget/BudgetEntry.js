@@ -1,6 +1,6 @@
 import React from 'react';
 import WizardStep from "../WizardStep";
-import {Button, Grid, Image} from "semantic-ui-react";
+import {Image} from "semantic-ui-react";
 
 import PriceLowest from "../img/budget/price_lowest.png";
 import PriceMiddle from "../img/budget/price_middle.png";
@@ -8,7 +8,6 @@ import PriceHighest from "../img/budget/price_highest.png";
 import Choices, {ChoiceEntry} from "../choices/Choices";
 import {updateBudget} from "../../../../redux/reducers";
 import {connect} from "react-redux";
-import cx from "classnames";
 
 
 function BudgetEntry(props) {
@@ -26,17 +25,13 @@ function BudgetEntry(props) {
     });
 
     return (
-        <WizardStep header="How much money do you want to spend on groceries?">
-            <Grid stackable>
-                <Choices choices={choices} maxSelections={1} selectionHandler={props.setBudget}/>
-                <Grid.Row columns={3} className={cx({hidden: !props.budget})}>
-                    <Grid.Column size={2}>
-                        <Button.Group>
-                            <Button size="large" onClick={props.previousStep}>Back</Button>
-                            <Button primary size="large" onClick={props.nextStep}>Continue</Button>
-                        </Button.Group> </Grid.Column>
-                </Grid.Row>
-            </Grid>
+        <WizardStep header="How much money do you want to spend on groceries?"
+                    hideBackBtn
+                    hideNextBtn={!props.budget}
+                    previousStep={props.previousStep}
+                    nextStep={props.nextStep}
+        >
+            <Choices choices={choices} maxSelections={1} selectionHandler={props.setBudget}/>
         </WizardStep>
     );
 }

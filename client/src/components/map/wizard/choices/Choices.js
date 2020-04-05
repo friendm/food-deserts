@@ -40,13 +40,15 @@ function Choices({choices, selectionHandler, maxSelections}) {
     }
 
     return (
-        <Grid.Row centered columns={choices.length}>
-            {choices.map(choice => <Grid.Column key={choice.key} textAlign="center">
-                <Choice id={choice.key} content={choice.content} selectionMade={selectionMade}
-                        numSelected={selection.length} maxSelections={maxSelections}
-                        selected={selection.indexOf(choice.key) >= 0} onClick={selectionClicked}/>
-            </Grid.Column>)}
-        </Grid.Row>
+        <Grid stackable>
+            <Grid.Row centered columns={choices.length}>
+                {choices.map(choice => <Grid.Column key={choice.key} textAlign="center">
+                    <Choice id={choice.key} content={choice.content} selectionMade={selectionMade}
+                            numSelected={selection.length} maxSelections={maxSelections}
+                            selected={selection.indexOf(choice.key) >= 0} onClick={selectionClicked}/>
+                </Grid.Column>)}
+            </Grid.Row>
+        </Grid>
     );
 }
 

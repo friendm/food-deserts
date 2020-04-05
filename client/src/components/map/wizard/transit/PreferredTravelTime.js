@@ -1,9 +1,7 @@
 import React from 'react';
 import {updatePreferredTravelTime} from "../../../../redux/reducers";
 import {connect} from "react-redux";
-import {Button, Grid} from "semantic-ui-react";
 import Choices, {ChoiceEntry} from "../choices/Choices";
-import cx from "classnames";
 import WizardStep from "../WizardStep";
 
 function choiceFn(choice) {
@@ -50,19 +48,14 @@ function PreferredTravelTimeEntry(props) {
     }
 
     return (
-        <WizardStep header="How long are you willing to spend getting there?">
-            <Grid stackable>
-                {props.preferredTransit.length === 1 &&
-                <Choices maxSelections={1} choices={choices[props.preferredTransit[0]]}
-                         selectionHandler={props.setPreferredTravelTime}/>}
-                <Grid.Row columns={3} className={cx({hidden: !props.preferredTravelTime.length})}>
-                    <Grid.Column size={2}>
-                        <Button.Group>
-                            <Button size="large" onClick={props.previousStep}>Back</Button>
-                            <Button primary size="large" onClick={props.nextStep}>Continue</Button>
-                        </Button.Group> </Grid.Column>
-                </Grid.Row>
-            </Grid>
+        <WizardStep header="How long are you willing to spend getting there?"
+                    hideNextBtn={!props.preferredTravelTime.length}
+                    previousStep={props.previousStep}
+                    nextStep={props.nextStep}
+        >
+            {props.preferredTransit.length === 1 &&
+            <Choices maxSelections={1} choices={choices[props.preferredTransit[0]]}
+                     selectionHandler={props.setPreferredTravelTime}/>}
         </WizardStep>
     );
 }

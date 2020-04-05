@@ -5,6 +5,7 @@
     border-radius: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .hidden {
@@ -18,11 +19,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
     .choice {
-        max-width: 125px;
+        max-width: 250px;
     }
 }
 
@@ -30,7 +33,6 @@
 .choice.selected {
     border-color: #4088e8;
     border-width: .19em;
-    /*text-shadow:2px 2px 5px #4088e8;*/
     color: #4088e8;
 }
 
@@ -40,15 +42,15 @@
     color: gray;
 }
 
+.choice > div > img.image {
+    max-width: 85px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .choice.not-selected > div > img.image {
     opacity: .6;
 }
-
-
-/*.choice.selected > div > img.image {*/
-/*    box-shadow: 10px 10px 5px #4088e8;*/
-/*}*/
-
 
 .choice-text {
     margin-top: 10px;

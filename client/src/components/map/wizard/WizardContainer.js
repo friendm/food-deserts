@@ -7,18 +7,18 @@ import {Header, Segment} from "semantic-ui-react";
 import BudgetEntry from "./budget/BudgetEntry";
 import PreferredTransitEntry from "./transit/PreferredTransitEntry";
 import PreferredTravelTime from "./transit/PreferredTravelTime";
+import {connect} from "react-redux";
 
-function WizardContainer(props) {
-    const [locationData, setLocationData] = useState({});
+function WizardContainer({address}) {
     const [instance, setInstance] = useState();
 
     return <div>
         <Header size="huge" textAlign={"center"}>Do you live in a food desert?</Header>
         <div id="wizard-container">
-            {locationData.address && instance &&
-            <Segment vertical><ChosenAddress stepWizard={instance} address={locationData.address}/></Segment>}
+            {address && instance &&
+            <Segment vertical><ChosenAddress stepWizard={instance}/></Segment>}
             <StepWizard instance={setInstance}>
-                <AddressEntry dataChange={setLocationData}/>
+                <AddressEntry/>
                 <BudgetEntry/>
                 <PreferredTransitEntry/>
                 <PreferredTravelTime/>
@@ -28,4 +28,10 @@ function WizardContainer(props) {
         ;
 }
 
-export default WizardContainer;
+const mapStateToProps = state => {
+    return {
+        address: state.address
+    }
+};
+
+export default connect(mapStateToProps)(WizardContainer);

@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import "../../css/wizard.css";
 import StepWizard from "react-step-wizard";
 import AddressEntry from "./address/AddressEntry";
 import ChosenAddress from "./address/ChosenAddress";
@@ -8,6 +7,7 @@ import BudgetEntry from "./budget/BudgetEntry";
 import PreferredTransitEntry from "./transit/PreferredTransitEntry";
 import PreferredTravelTime from "./transit/PreferredTravelTime";
 import {connect} from "react-redux";
+import "./style.css";
 
 function WizardContainer({address}) {
     const [instance, setInstance] = useState();

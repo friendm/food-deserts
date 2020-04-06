@@ -6,6 +6,7 @@
     <package-manager value="yarn" />
     <envs>
       <env name="DEBUG" value="true" />
+      <env name="PORT" value="3000" />
     </envs>
     <method v="2" />
   </configuration>

@@ -1,10 +1,4 @@
 import React from "react";
-import "./App.css";
-import "./css/base.css";
-import "./css/layout.css";
-import "./css/module.css";
-import "./css/state.css";
-import "./css/style.css";
 import CacheBuster from "./components/util/CacheBuster";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import MapContainer from "./components/map/MapContainer";

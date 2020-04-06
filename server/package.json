@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,13 +14,10 @@
     "ejs": "~3.0.1",
     "express": "~4.17.1",
     "express-rate-limit": "^5.1.1",
-    "follow-redirects": "^1.10.0",
     "geometry": "^0.1.0",
     "http-errors": "~1.7.3",
     "morgan": "~1.10.0",
     "path": "^0.12.7",
-    "request": "^2.34",
-    "request-promise": "^4.2.5",
     "serve-static": "^1.14.1"
   },
   "license": "MIT"

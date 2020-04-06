@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
-require("dotenv").config;
+const axios = require("axios").default;
 
 const key = process.env.GOOGLE_MAPS_API_KEY;
 

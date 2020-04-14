@@ -1,7 +1,7 @@
 import React from "react";
 import CacheBuster from "./components/util/CacheBuster";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import MapContainer from "./components/map/MapContainer";
+import MapContainer from "./components/MapContainer";
 import Home from "./components/home/Home";
 import EmailTemp from "./components/EmailTemp";
 import MoreInfo from "./components/MoreInfo";

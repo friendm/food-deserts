@@ -1,5 +1,5 @@
 import React from "react";
-import GoogleMap from "./map/GoogleMap";
+import CompleteMap from "./map/GoogleMap";
 import Filters from "./filters/Filters.js";
 
 class MapContainer extends React.Component {
@@ -11,7 +11,7 @@ class MapContainer extends React.Component {
     }
 
     async getNearbyStores() {
-        let temp = `http://localhost:9000/map/query?lat=${this.lat}"&long=${this.long}`;
+        let temp = `/api/v1/map/query?lat=${this.lat}&long=${this.long}`;
         let response = await fetch(temp);
         let data = await response.json();
         this.setState({apiResponse: "got"});
@@ -25,10 +25,10 @@ class MapContainer extends React.Component {
 
     render() {
         return (
-            <div class="outer">
+            <div className="outer">
                 <button onClick={() => this.getNearby()}> Click me</button>
                 <h1>Map</h1>
-                <GoogleMap lat={this.lat} long={this.long}/>
+                <CompleteMap lat={this.lat} long={this.long}/>
                 <Filters/>
             </div>
         );

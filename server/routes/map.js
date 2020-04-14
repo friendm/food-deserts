@@ -1,45 +1,94 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios").default;
+const axios = require("axios");
 
-const key = process.env.GOOGLE_MAPS_API_KEY;
+
+const key = process.env.BACKEND_API;
 
 let PlaceDetails = function () {
     this.places = [];
 };
 
-router.get("/query", async function (req, res, next) {
-    let lat = req.query.lat;
-    let long = req.query.long;
-    let radius = 50000;
-    let answer;
-    let results;
-    let PD = new PlaceDetails();
+const GMAPS_API_BASE_URL = "https://maps.googleapis.com/maps/api";
 
-    let host = "https://maps.googleapis.com";
-    let path = `/maps/api/place/nearbysearch/json?location=${lat},${long}&radius=${radius}&type=grocery_or_supermarket&key=${key}`;
-    const total = host + path;
+router.get("/query", async function (req, res, next) {
+    const lat = req.query.lat;
+    const long = req.query.long;
+
+    //calculated later
+    const timeLimit = 30 * 60; // seconds
+
+    //calculated later
+    const radius = 50000; // meters
+
+    //passed in from front end
+    const mode = "driving";
+
+    let response;
+    let distanceData;
+    const PD = new PlaceDetails();
+
+    const url = `${GMAPS_API_BASE_URL}/place/nearbysearch/json?location=${lat},${long}&radius=${radius}&type=grocery_or_supermarket&key=${key}`;
+
     try {
-        answer = await axios({
-            url: total,
+        response = await axios({
+            url,
             method: "get"
         });
-        results = answer.data.results;
+        distanceData = response.data.results;
     } catch (error) {
         console.error(error);
+        res.end(JSON.stringify({
+            ok: false,
+            message: "Server error occurred"
+        }));
     }
 
-    PD.places.push(["name", "location", "place_id", "vicinity"]);
-    for (let i = 0; i < results.length; i++) {
-        let temp = results[i];
-        console.log(temp.name);
-        console.log(temp.geometry.location);
-        PD.places.push([temp.name, temp.geometry.location, temp.place_id, temp.vicinity]);
+    PD.places = distanceData.map(place => {
+        return {
+            name: place.name,
+            location: place.geometry.location,
+            id: place.place_id,
+            vicinity: place.vicinity
+        };
+    });
+    const origin = `${lat},${long}`;
+    const dests = PD.places.map(place => `place_id:${place.id}`);
+    let results = [];
+
+    if (PD.places.length) {
+        const distanceMatrixUrl = `${GMAPS_API_BASE_URL}/distancematrix/json?origins=${origin}&destinations=${dests.join("|")}&mode=${mode}&key=${key}&units=imperial`;
+
+        try {
+            response = await axios({
+                url: distanceMatrixUrl,
+                method: "get"
+            });
+            distanceData = response.data;
+        } catch (error) {
+            console.error(error);
+            res.end(JSON.stringify({
+                ok: false,
+                message: "Server error occurred"
+            }));
+        }
+
+        results = PD.places.map((place, index) => {
+            return {
+                ...place,
+                distance: distanceData.rows[0].elements[index].distance,
+                duration: distanceData.rows[0].elements[index].duration
+            };
+        });
+
+        results = results.filter(place => place.duration.value < timeLimit);
     }
 
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(PD.places));
+    res.end(JSON.stringify({
+        ok: true,
+        results
+    }));
 });
-
 
 module.exports = router;

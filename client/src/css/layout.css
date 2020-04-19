@@ -1,7 +1,7 @@
 /*Hides overflow scrollbar in main content container.*/
 .pushable {
     overflow-y: hidden;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 
@@ -15,17 +15,17 @@
 }
 
 /* Hero banner row has extra margin */
-.ui.grid > .row.hero {
+.home .ui.grid > .row.hero {
     margin: 5.5em auto;
 }
 
 /* Other rows have margins on the bottom */
-.ui.grid > .row {
+.home .ui.grid > .row {
     margin: 0 auto 5.5em auto;
 }
 
-.ui.grid > .row.full-width-row,
-.ui.grid > .row.full-width-row > .column {
+#fooddesert.row.full-width-row,
+#fooddesert.row.full-width-row > .column {
     width: 100%;
     max-width: none;
     padding: 0;

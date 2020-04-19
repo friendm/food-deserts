@@ -14,7 +14,7 @@ import PoweredByGoogle from "./img/powered_by_google_on_white.png";
 function WizardContainer({address}) {
     const [instance, setInstance] = useState();
 
-    return <div style={{maxHeight: "600px"}}>
+    return <div>
         <Header size="huge" textAlign={"center"}>Do you live in a food desert?</Header>
         <div id="wizard-container">
             {address && instance &&

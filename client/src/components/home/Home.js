@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 
 function Home(props) {
     return (
-        <Grid columns={"2"} verticalAlign={"middle"} stackable>
+        <Grid className="home" columns={"2"} verticalAlign={"middle"} stackable>
             {/*Hero banner*/}
             <Grid.Row className="hero">
 
@@ -57,9 +57,8 @@ function Home(props) {
 
             </Grid.Row>
 
-
             {/*Call to action*/}
-            <Grid.Row columns={1} className="cta-row full-width-row">
+            <Grid.Row columns={1} className="cta-row full-width-row" id="fooddesert">
                 <Grid.Column className="info-center info">
                     <Header size="large">Am I living in a food desert?</Header>
                     <Button className="main-cta cta" as={Link} to="/map">Find out now</Button>

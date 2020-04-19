@@ -6,7 +6,7 @@ function WizardStep({header, hideBackBtn, hideNextBtn, previousStep, nextStep, c
         <Segment vertical>
             <Header textAlign={"center"} size={"large"}>{header}</Header>
             {children}
-            <Grid>
+            {(!hideBackBtn || !hideNextBtn) && <Grid>
                 <Grid.Row columns={2}>
                     <Grid.Column size={1}>
                         {!hideBackBtn && <Button size="large" onClick={previousStep}>Back</Button>}
@@ -15,7 +15,7 @@ function WizardStep({header, hideBackBtn, hideNextBtn, previousStep, nextStep, c
                         {!hideNextBtn && <Button primary size="large" onClick={nextStep}>Continue</Button>}
                     </Grid.Column>
                 </Grid.Row>
-            </Grid>
+            </Grid>}
         </Segment>
     );
 }

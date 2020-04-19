@@ -8,6 +8,12 @@ img.home-img {
     font-size: 1.3em;
 }
 
+#fooddesert {
+    background-image: url(img/map.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /* from https://github.com/Semantic-Org/Semantic-UI/issues/4805#issuecomment-292021293 */
 .ui.button.basic.blue.link, .ui.button.basic.blue.link:hover, .ui.button.basic.blue.link:focus {
     box-shadow: 0 0 !important;

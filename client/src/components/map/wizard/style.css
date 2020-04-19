@@ -23,9 +23,17 @@
     margin-right: auto;
 }
 
+div.ui.card.place-card {
+    max-width: 46%;
+}
+
 @media screen and (max-width: 767px) {
     .choice {
         max-width: 250px;
+    }
+
+    div.ui.card.place-card {
+        max-width: 100%;
     }
 }
 

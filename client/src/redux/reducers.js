@@ -3,13 +3,16 @@ export const SET_LOCATION = "SET_LOCATION";
 export const SET_BUDGET = "SET_BUDGET";
 export const SET_PREFERRED_TRANSIT = "SET_PREFERRED_TRANSIT";
 export const SET_PREFERRED_TRAVEL_TIME = "SET_PREFERRED_TRAVEL_TIME";
+export const SET_READY_TO_CALCULATE_RESULTS = "SET_READY_TO_CALCULATE_RESULTS";
+export const CLEAR_STORE = "CLEAR_STORE";
 
 const initialState = {
     address: "",
     location: null,
     budget: "",
     preferredTransit: [],
-    preferredTravelTime: []
+    preferredTravelTime: [],
+    readyToCalculateResults: false
 };
 
 export function updateAddress(address) {
@@ -47,6 +50,19 @@ export function updatePreferredTravelTime(travelTime) {
     };
 }
 
+export function setReadyToCalculateResults(ready) {
+    return {
+        type: SET_READY_TO_CALCULATE_RESULTS,
+        ready
+    };
+}
+
+export function clearStore() {
+    return {
+        type: CLEAR_STORE
+    };
+}
+
 export function rootReducer(state = initialState, action) {
     switch (action.type) {
         case SET_ADDRESS:
@@ -74,6 +90,13 @@ export function rootReducer(state = initialState, action) {
                 ...state,
                 preferredTravelTime: action.travelTime
             };
+        case SET_READY_TO_CALCULATE_RESULTS:
+            return {
+                ...state,
+                readyToCalculateResults: action.ready
+            };
+        case CLEAR_STORE:
+            return initialState;
         default:
             return state;
     }

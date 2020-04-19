@@ -2,17 +2,19 @@ import React, {useState} from "react";
 import StepWizard from "react-step-wizard";
 import AddressEntry from "./address/AddressEntry";
 import ChosenAddress from "./address/ChosenAddress";
-import {Header, Segment} from "semantic-ui-react";
+import {Header, Image, Segment} from "semantic-ui-react";
 import BudgetEntry from "./budget/BudgetEntry";
 import PreferredTransitEntry from "./transit/PreferredTransitEntry";
 import PreferredTravelTime from "./transit/PreferredTravelTime";
 import {connect} from "react-redux";
 import "./style.css";
+import ResultsContainer from "./results/ResultsContainer";
+import PoweredByGoogle from "./img/powered_by_google_on_white.png";
 
 function WizardContainer({address}) {
     const [instance, setInstance] = useState();
 
-    return <div>
+    return <div style={{maxHeight: "600px"}}>
         <Header size="huge" textAlign={"center"}>Do you live in a food desert?</Header>
         <div id="wizard-container">
             {address && instance &&
@@ -22,7 +24,9 @@ function WizardContainer({address}) {
                 <BudgetEntry/>
                 <PreferredTransitEntry/>
                 <PreferredTravelTime/>
+                <ResultsContainer/>
             </StepWizard>
+            <Image style={{marginTop: "5px"}} src={PoweredByGoogle}/>
         </div>
     </div>
         ;

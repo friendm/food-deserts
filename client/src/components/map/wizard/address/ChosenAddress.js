@@ -1,11 +1,12 @@
 import React from "react";
 import {Button} from "semantic-ui-react";
 import {connect} from "react-redux";
-import {updateAddress, updateLocation} from "../../../../redux/reducers";
+import {setReadyToCalculateResults, updateAddress, updateLocation} from "../../../../redux/reducers";
 
 
 function ChosenAddress({address, setAddress, setLocation, stepWizard}) {
     function onClickHandler() {
+        setReadyToCalculateResults(false);
         setAddress("");
         setLocation(null);
         stepWizard.firstStep();
@@ -22,6 +23,9 @@ const mapDispatchToProps = dispatch => {
         },
         setLocation: location => {
             dispatch(updateLocation(location));
+        },
+        setReadyToCalculateResults: ready => {
+            dispatch(setReadyToCalculateResults(ready));
         }
     };
 };

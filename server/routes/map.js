@@ -16,24 +16,42 @@ router.get("/query", async function (req, res, next) {
     const long = req.query.long;
 
     //calculated later
-    const timeLimit = req.query.tt * 60; // seconds
+    let timeLimit = parseInt(req.query.tt) * 60; // seconds
 
     //calculated later
     const radius = 50000; // meters
 
     //passed in from front end
     const modetemp = req.query.transit;
+
     let mode = "";
 
-    if("wheelchair" === modetemp || "walking" === modetemp) {
+    if ("wheelchair_or_scooter" === modetemp || "walking" === modetemp) {
         mode = "walking";
+        if ("wheelchair_or_scooter" === modetemp) {
+            timeLimit = timeLimit/2;
+        }
     } else if ("public_transit" === modetemp) {
         mode = "transit";
     } else if ("car" === modetemp) {
         mode = "driving";
     }
 
-    const price = req.query.budget;
+    let price = 0;
+
+    switch(req.query.budget) {
+        case "$":
+            price = 2;
+            break;
+        case "$$":
+            price = 3;
+            break;
+        case "$$$":
+            price = 4;
+            break;
+        default:
+            price = 2;
+    }
 
     let response;
     let distanceData;
@@ -41,7 +59,7 @@ router.get("/query", async function (req, res, next) {
     const PD = new PlaceDetails();
 
     const url = encodeURI(`${GMAPS_API_BASE_URL}/place/nearbysearch/json?location=${lat},${long}`
-        + `&rankby=distance&keyword=supermarket|grocery|market&key=${key}`);
+        + `&rankby=distance&maxprice=${price}&keyword=supermarket|grocery|market&key=${key}`);
 
     try {
         response = await axios({

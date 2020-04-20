@@ -1,0 +1,20 @@
+{
+  "name": "Food Desert Mapping Application",
+  "description": "An application to teach people about food deserts and help them learn if they live in one",
+  "repository": "https://github.com/Team9353/food-deserts",
+  "logo": "https://i.imgur.com/Mx6zi5d.png",
+  "keywords": [
+    "node",
+    "express",
+    "react"
+  ],
+  "env": {
+    "BACKEND_API": {
+      "description": "The Google Maps API key to use for the backend"
+    },
+    "REACT_APP_GOOGLE_MAPS_API_KEY": {
+      "description": "The Google Maps API to use for the frontend"
+    }
+  },
+  "success_url": "/"
+}

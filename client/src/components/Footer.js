@@ -5,7 +5,7 @@ import packageJson from "../../package.json";
 
 export function Footer() {
     return <Grid divided textAlign={"center"} centered stackable style={{
-        marginTop: "25px", paddingBottom: "10px", background: "#B2E5BC"
+        marginTop: "25px", marginBottom: 0, paddingTop: "10px", paddingBottom: "10px", background: "#B2E5BC"
     }}>
         <Grid.Row>
             <Grid.Column textAlign={"center"} width={4}>

@@ -2,7 +2,7 @@ import React from "react";
 import {Grid, Header, List, Segment} from "semantic-ui-react";
 
 const MoreInfo = () => (
-    <Grid centered padded columns={12}>
+    <Grid centered stackable padded columns={12}>
         <Grid.Row>
             <Grid.Column width={8}>
                 <Segment>

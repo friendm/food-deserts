@@ -7,7 +7,8 @@ import BudgetEntry from "./budget/BudgetEntry";
 import PreferredTransitEntry from "./transit/PreferredTransitEntry";
 import PreferredTravelTime from "./transit/PreferredTravelTime";
 import {connect} from "react-redux";
-import "./style.css";
+import "./wizard.css";
+
 import ResultsContainer from "./results/ResultsContainer";
 import PoweredByGoogle from "./img/powered_by_google_on_white.png";
 

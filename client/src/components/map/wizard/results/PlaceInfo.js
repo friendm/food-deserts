@@ -1,6 +1,6 @@
 import React from "react";
 import {Card, Icon} from "semantic-ui-react";
-import "../style.css";
+import "../wizard.css";
 import cx from "classnames";
 
 function PlaceInfo({place, style, inMap}) {

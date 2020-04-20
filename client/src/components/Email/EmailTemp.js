@@ -71,7 +71,7 @@ class EmailTemp extends React.Component {
                     }.
                         I wanted to reach out to you for assistance. I currently
                         live in a food desert - I usually stay in
-                        the {this.state.city ? this.state.city : "_____ "} area.
+                        the {this.state.city ? this.state.city : "_____"} area.
                         Given the fact that I live in a food desert, I would like
                         to find methods/places where I can get food on a regular
                         basis. I would love to speak with you about any
@@ -80,7 +80,7 @@ class EmailTemp extends React.Component {
                         <br/>
                         Thank you, <br/>
                         {this.state.name ? this.state.name :
-                            "_____"} {this.state.lName ? this.state.lName :
+                            "_____"}&nbsp;{this.state.lName ? this.state.lName :
                         "_____"}
                     </p>
                 </Container>
@@ -91,7 +91,7 @@ class EmailTemp extends React.Component {
                     <Header as='h2'>Your Email To Your Doctor:</Header>
                     <p>
                         Hello. My name is {this.state.name ? this.state.name :
-                        "_____ "} {this.state.lName ? this.state.lName :
+                        "_____"}&nbsp;{this.state.lName ? this.state.lName :
                         "_____"}. I wanted to reach out to you for assistance in
                         connecting with a social worker. I currently live in a
                         food desert - I usually stay in the {this.state.city ? this.state.city : "_____ "} area.
@@ -122,11 +122,11 @@ class EmailTemp extends React.Component {
     render() {
         return (
 
-            <Grid className="Email" padded centered columns={12}>
+            <Grid className="Email" padded stackable centered columns={12}>
                 <Grid.Row>
                     <Grid.Column width={8}>
                         <h1>Email Message Template</h1>
-                        <p> Fill out the form below to make a message.</p> <br/>
+                        <p>Fill out the form below to make a message.</p> <br/>
 
                         <Dropdown
                             placeholder='Select Template'

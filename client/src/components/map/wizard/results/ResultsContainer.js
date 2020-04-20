@@ -26,12 +26,7 @@ function ResultsContainer(props) {
     }
 
     function beforeFirstStep() {
-        setData(null);
-        setHeader("Your Results");
-        setHeaderColor("black");
-        setHeaderIcon("");
-        props.clearStore();
-        props.firstStep();
+        window.location.reload();
     }
 
     // This is an Effect
@@ -114,7 +109,7 @@ function ResultsContainer(props) {
                         </List.Content>
                     </List.Item>
                     <List.Item>
-                        <List.Icon name={"arrow alternate circle left"}/>
+                        <List.Icon name={"refresh"}/>
                         <List.Content>
                             <List.Header as={"a"} onClick={beforeFirstStep}>Try this food desert wizard
                                 again</List.Header>

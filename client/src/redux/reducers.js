@@ -9,7 +9,7 @@ export const CLEAR_STORE = "CLEAR_STORE";
 const initialState = {
     address: "",
     location: null,
-    budget: "",
+    budget: [],
     preferredTransit: [],
     preferredTravelTime: [],
     readyToCalculateResults: false

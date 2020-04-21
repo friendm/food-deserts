@@ -29,7 +29,7 @@ First, click this button to open Heroku.  Sign up or login to your account if re
 You will need 2 Google Maps API keys for this, which you can obtain using the instructions below:
 
 1. Go to [console.cloud.google.com](https://console.cloud.google.com/).  Sign in with your Google account.
-2. You will need a Google Cloud Platform project to continue.  If you don't have one already, 
+2. You will need a Google Cloud Platform project to continue.  If you don't have one already,
 follow [these instructions](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 to set one up.
 3. Now, you should be inside your desired Google Cloud Platform project.  Make sure you see your project name
@@ -45,7 +45,7 @@ and type "Google Maps"
 11. Return to the navigation menu on the left, hover on the **APIs & Services** item, and select **Credentials** in the context menu that appears.
 12. Near the top of the page that appears, click **Create Credentials**, then select **API key.**
 13. An API key will be created.  Click **Restrict Key** in the dialog that appears on screen.
-14. Now, we will restrict this API key to limit the potential for abuse if a third-party got ahold of the API key.  **NOTE:** 
+14. Now, we will restrict this API key to limit the potential for abuse if a third-party got ahold of the API key.  **NOTE:**
 Anyone in possession of the backend API key can use it, so treat it like a password and regenerate it if you think an unauthorized party might have
 gotten access to it.
 15. In the name field, type **Backend**. Look for the **API restrictions** header and choose **Restrict key**.  In the dropdown menu, choose Distance Matrix API and Places API.
@@ -71,7 +71,7 @@ steps should be executed there.
 #### Install Dependencies
 
 1. Make sure you have [node.js](https://nodejs.org/en/download/) and NPM (the Node Package Manager, which should be included
-with node.js) installed on your computer.  If you have the option, install the required 
+with node.js) installed on your computer.  If you have the option, install the required
 dependencies for node-gyp (a way to compile node dependencies from source) to save yourself some trouble later.
 2. Install the [Yarn package manager](https://classic.yarnpkg.com/en/docs/install).
 3. Open a terminal in the root directory of this repository (same as this file)
@@ -86,7 +86,7 @@ variables.
 1. You will need a Google Maps API key to continue.  These instructions will assume you're starting from scratch,
 but you can skip ahead to step 22 if you already have a Google Maps API key.
 2. Go to [console.cloud.google.com](https://console.cloud.google.com/).  Sign in with your Google account.
-3. You will need a Google Cloud Platform project to continue.  If you don't have one already, 
+3. You will need a Google Cloud Platform project to continue.  If you don't have one already,
 follow [these instructions](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 to set one up.
 4. Now, you should be inside your desired Google Cloud Platform project.  Make sure you see your project name
@@ -102,7 +102,7 @@ and type "Google Maps"
 12. Return to the navigation menu on the left, hover on the **APIs & Services** item, and select **Credentials** in the context menu that appears.
 13. Near the top of the page that appears, click **Create Credentials**, then select **API key.**
 14. An API key will be created.  Click **Restrict Key** in the dialog that appears on screen.
-15. Now, we will restrict this API key to limit the potential for abuse if a third-party got ahold of the API key.  **NOTE:** 
+15. Now, we will restrict this API key to limit the potential for abuse if a third-party got ahold of the API key.  **NOTE:**
 Anyone in possession of the backend API can use it, so treat it like a password and regenerate it if you think someone might have
 gotten access to it.
 16. In the name field, type **Backend**. Look for the **API restrictions** header and choose **Restrict key**.  In the dropdown menu, choose Distance Matrix API and Places API.
@@ -154,7 +154,7 @@ We suggest Googling these errors; while they are fairly common, the solutions va
 **Problem: I am making changes to the frontend, but I can't see them**<br />
 **Solution:** The backend server will host a version of the frontend created from running `yarn run build` in the
 [client](/client) directory.  This is hosted at whatever port the backend server is running on, usually 3000, and
-_it does not reflect changes to files made until `yarn run build` is run again_. Check the URL you are accessing, 
+_it does not reflect changes to files made until `yarn run build` is run again_. Check the URL you are accessing,
 and make sure it's the one that corresponds to the React development server,
 which you can start by opening a terminal, navigating to the [client](/client) directory, and
 running `yarn start`.
@@ -181,3 +181,65 @@ a React component that will force clients to clear their cache any time a new ve
 if the version is incremented on all releases.
 - Commit changes to any yarn.lock files.  We have used Yarn as the package manager for this repo, so you should not commit
 a package-lock.json for run `npm install` at any point.
+
+
+
+# Release Notes
+## Version 1.8 (April 19, 2020)
+
+### Changes
+-   Completed FAQ, Email, Info, Terms of Services and Privacy Policy Pages
+-   Fully implemented Results screen of the wizard
+-   Pass filter (transit, budget, etc.) results to backend
+-   Improved backend API (added mode of transportation, time limit, budget constraints)
+-   Fix CSS bugs in production deployment
+-   Fix mode of transportation bug
+-   Fix `rankby` and radius filter bug
+-   Added installation instructions to README
+
+### Known Issues
+-  Because we filter grocery stores by price, stores without a price field are not considered
+- Choices stores what’s selected in its own state and tells redux what was select, but it will not go in the opposite way
+
+## Version 1.7 (April 14, 2020)
+-   Find stores based on actual route time (implemented Google Maps Distance Matrix API)
+-   Send real data from frontend to backend for testing
+-   Account for more factors in Google Maps API calls
+-   Made Distance Matrix API calls more efficient
+## Version 1.6 (April 5, 2020)
+-   Frontend style improvements
+-   Added additional wizard steps
+-   Fix bug with nested scroll bar
+-   Switched to local semantic UI CSS rather than CDN
+-   Implement logo in navigation bar and hamburger menu
+-   Implement Redux with wizard
+-   Wizard display improvements on mobile
+-   Fix up frontend style issues
+-   Fixed environment variable issues in staging deployment
+
+## Version 1.5 (April 3, 2020)
+-   Added functionality to frontend to retrieve 20 local grocery stores in Atlanta on button click
+-   Fix bug where many grocery stores did not show up in results
+-   Fix bug where grocery store results are passed to the frontend without being fully retrieved from backend
+
+## Version 1.4 (April 2, 2020)
+-   Added finishing touches to first version of wizard, except for the results page
+-   Added homepage CSS
+-   Add CSS classes to Home component for foundational styling
+-   Finishing touches to wizard container
+
+## Version 1.3 (March 30, 2020)
+-   Reorganized component CSS files to clarify usage
+-   CSS files relevant to website are organized into SMACSS format
+
+## Version 1.2 (March 26, 2020)
+-   Added address change to wizard
+-   Added budget step to wizard
+
+## Version 1.1 (March 6, 2020)
+-   Initial Wizard Functionality
+
+## Version 1.0 (Mar 4, 2020)
+-   Initial release
+
+
